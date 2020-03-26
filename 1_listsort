@@ -1,0 +1,22 @@
+def list_sort(mylist,re=True):
+    n=len(mylist)
+    a=0
+    while a<n:
+        for i in range(n-1):
+            if mylist[i] > mylist[i+1]:
+                tmp=mylist[i]
+                mylist[i]=mylist[i+1]
+                mylist[i+1]=tmp
+        a += 1
+    if re==True:
+        return mylist
+    else:
+        newlist=[]
+        for i in range(n):
+            newlist.append(mylist[n-1-i])
+        return newlist
+    
+if __name__=="__main__":
+    a=[1,2,3,1,2,3,4,5,6,7,8,9,10,11,12,13,14,2,7]
+    new_list=list_sort(a,True)
+    print(new_list)
