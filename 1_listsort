@@ -1,22 +1,48 @@
-def list_sort(mylist,re=True):
+@author: RJ
+"""
+def list_sort(mylist,key=1,re=True):
     n=len(mylist)
-    a=0
-    while a<n:
+    if key==1:
+        newlist=list_sort1(mylist)
+    elif key==2:
+        newlist=list_sort2(mylist)
+        
+    if re==True:
+        return newlist
+    else:
+        new_list=[]
+        for i in range(n):
+            new_list.append(mylist[n-1-i])
+        return new_list
+
+
+def list_sort1(mylist):  #冒泡排序  O(n^2)
+    n=len(mylist)
+    for j in range(n-1):
         for i in range(n-1):
             if mylist[i] > mylist[i+1]:
                 tmp=mylist[i]
                 mylist[i]=mylist[i+1]
                 mylist[i+1]=tmp
-        a += 1
-    if re==True:
-        return mylist
-    else:
-        newlist=[]
-        for i in range(n):
-            newlist.append(mylist[n-1-i])
-        return newlist
+    return mylist
+
+
+def list_sort2(mylist):   #选择排序
+    n=len(mylist)
+    index=0
+    while True:
+        for i in range(index + 1 , n ):
+            if mylist[index] > mylist[i]:
+                t=mylist[index]
+                mylist[index]=mylist[i]
+                mylist[i]=t            
+        index += 1
+        if index==n-1:
+            break
+    return mylist
     
 if __name__=="__main__":
     a=[1,2,3,1,2,3,4,5,6,7,8,9,10,11,12,13,14,2,7]
-    new_list=list_sort(a,True)
+    b=[]
+    new_list=list_sort(a,2,True)
     print(new_list)
